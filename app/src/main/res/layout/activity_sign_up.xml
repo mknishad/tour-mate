@@ -8,5 +8,26 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nishad.tourmate.SignUpActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:hint="User Name"
+        android:textSize="30dp"
+        android:id="@+id/username"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mail"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="10dp"
+        android:hint="Email"
+        android:textSize="30dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_below="@+id/mail"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:hint="Password"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
