@@ -5,13 +5,31 @@ package com.example.nishad.tourmate.model;
  */
 public class User {
 
+    private int userId;
     private String userName;
     private String email;
     private String password;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public User() {
     }
 
+    // Constructor with id
+    public User(int userId, String userName, String email, String password) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+
+    // Constructor without id
     public User(String userName, String email, String password) {
         this.userName = userName;
         this.email = email;
