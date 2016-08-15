@@ -5,6 +5,7 @@ package com.example.nishad.tourmate.model;
  */
 public class Moment {
 
+    private int momentId;
     private String momentType;
     private String detail;
     private double cost;
@@ -18,7 +19,20 @@ public class Moment {
         this.detail = detail;
     }
 
+    public Moment(int momentId, String momentType, String detail) {
+        this.momentId = momentId;
+        this.momentType = momentType;
+        this.detail = detail;
+    }
+
     public Moment(String detail, String momentType, double cost) {
+        this.detail = detail;
+        this.momentType = momentType;
+        this.cost = cost;
+    }
+
+    public Moment(int momentId, String detail, String momentType, double cost) {
+        this.momentId = momentId;
         this.detail = detail;
         this.momentType = momentType;
         this.cost = cost;
@@ -28,6 +42,21 @@ public class Moment {
         this.imagePath = imagePath;
         this.detail = detail;
         this.momentType = momentType;
+    }
+
+    public Moment(int momentId, String imagePath, String detail, String momentType) {
+        this.momentId = momentId;
+        this.imagePath = imagePath;
+        this.detail = detail;
+        this.momentType = momentType;
+    }
+
+    public int getMomentId() {
+        return momentId;
+    }
+
+    public void setMomentId(int momentId) {
+        this.momentId = momentId;
     }
 
     public String getMomentType() {

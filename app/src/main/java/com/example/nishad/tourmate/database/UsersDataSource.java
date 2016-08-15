@@ -14,7 +14,6 @@ public class UsersDataSource {
 
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase database;
-    private User user;
 
     // Initialize database helper in constructor
     public UsersDataSource(Context context) {
@@ -31,7 +30,7 @@ public class UsersDataSource {
         database.close();
     }
 
-    // Add a user to Users table
+    // Add an user to Users table
     public boolean addUser(User user) {
         this.open();
 
@@ -51,10 +50,10 @@ public class UsersDataSource {
     public User getUser(String email) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID, DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_EMAIL, DatabaseHelper.COL_PASSWORD}, DatabaseHelper.COL_EMAIL + " = " + email, null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID, DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_EMAIL, DatabaseHelper.COL_PASSWORD}, DatabaseHelper.COL_EMAIL + " = '" + email + "';", null, null, null, null);
 
         cursor.moveToFirst();
-        user = createUser(cursor);
+        User user = createUser(cursor);
         cursor.close();
         this.close();
 

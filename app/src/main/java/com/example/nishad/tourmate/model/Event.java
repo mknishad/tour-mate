@@ -5,19 +5,38 @@ package com.example.nishad.tourmate.model;
  */
 public class Event {
 
+    private int eventId;
     private String eventName;
-    private String budget;
+    private double budget;
     private String from;
     private String to;
+    private int userIdForeign;
 
-    public Event() {
-    }
-
-    public Event(String eventName, String budget, String from, String to) {
+    public Event(int eventId, String eventName, double budget, String from, String to, int userIdForeign) {
+        this.eventId = eventId;
         this.eventName = eventName;
         this.budget = budget;
         this.from = from;
         this.to = to;
+        this.userIdForeign = userIdForeign;
+    }
+
+    public Event(String eventName, double budget, String from, String to) {
+        this.eventName = eventName;
+        this.budget = budget;
+        this.from = from;
+        this.to = to;
+    }
+
+    public Event() {
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventName() {
@@ -28,11 +47,11 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public String getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public void setBudget(String budget) {
+    public void setBudget(double budget) {
         this.budget = budget;
     }
 
