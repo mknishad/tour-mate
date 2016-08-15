@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,21 +16,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TravelEventsActivity"
+            android:name=".activity.TravelEventsActivity"
             android:label="@string/title_activity_travel_events"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".activity.SignUpActivity" />
         <activity
-            android:name=".AddEventActivity"
+            android:name=".activity.AddEventActivity"
             android:label="@string/title_activity_add_event"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MomentsActivity"
+            android:name=".activity.MomentsActivity"
             android:label="@string/title_activity_moments"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddMomentPhotoActivity" />
-        <activity android:name=".AddMomentExpenseActivity" />
-        <activity android:name=".AddMomentStatusActivity"></activity>
+        <activity android:name=".activity.AddMomentPhotoActivity" />
+        <activity android:name=".activity.AddMomentExpenseActivity" />
+        <activity android:name=".activity.AddMomentStatusActivity"></activity>
     </application>
 
 </manifest>

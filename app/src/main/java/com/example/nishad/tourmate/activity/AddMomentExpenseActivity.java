@@ -1,7 +1,9 @@
-package com.example.nishad.tourmate;
+package com.example.nishad.tourmate.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.nishad.tourmate.R;
 
 public class AddMomentExpenseActivity extends AppCompatActivity {
 
