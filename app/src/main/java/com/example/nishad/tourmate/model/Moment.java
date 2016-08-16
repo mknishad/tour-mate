@@ -10,45 +10,55 @@ public class Moment {
     private String detail;
     private double cost;
     private String imagePath;
+    private int eventIdForeign;
 
     public Moment() {
     }
 
+    // Constructor for status moment without id and foreign key
     public Moment(String momentType, String detail) {
         this.momentType = momentType;
         this.detail = detail;
     }
 
-    public Moment(int momentId, String momentType, String detail) {
+    // Constructor for status moment with id and foreign key
+    public Moment(int momentId, String momentType, String detail, int eventIdForeign) {
         this.momentId = momentId;
         this.momentType = momentType;
         this.detail = detail;
+        this.eventIdForeign = eventIdForeign;
     }
 
+    // Constructor for expense moment without id and foreign key
     public Moment(String detail, String momentType, double cost) {
         this.detail = detail;
         this.momentType = momentType;
         this.cost = cost;
     }
 
-    public Moment(int momentId, String detail, String momentType, double cost) {
+    // Constructor for expense moment with id and foreign key
+    public Moment(int momentId, String detail, String momentType, double cost, int eventIdForeign) {
         this.momentId = momentId;
         this.detail = detail;
         this.momentType = momentType;
         this.cost = cost;
+        this.eventIdForeign = eventIdForeign;
     }
 
+    // Constructor for photo moment without id and foreign key
     public Moment(String imagePath, String detail, String momentType) {
         this.imagePath = imagePath;
         this.detail = detail;
         this.momentType = momentType;
     }
 
-    public Moment(int momentId, String imagePath, String detail, String momentType) {
+    // Constructor for photo moment with id and foreign key
+    public Moment(int momentId, String imagePath, String detail, String momentType, int eventIdForeign) {
         this.momentId = momentId;
         this.imagePath = imagePath;
         this.detail = detail;
         this.momentType = momentType;
+        this.eventIdForeign = eventIdForeign;
     }
 
     public int getMomentId() {

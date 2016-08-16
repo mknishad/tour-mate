@@ -47,7 +47,22 @@ public class EventsDataSource {
         return inserted>0 ? true:false;
     }
 
-    public ArrayList<com.example.nishad.tourmate.model.Event> getEvents(int userId) {
+    // Get a single event
+    public com.example.nishad.tourmate.model.Event getEvent(int eventId) {
+        this.open();
+
+        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_BUDGET, DatabaseHelper.COL_FROM, DatabaseHelper.COL_TO, DatabaseHelper.COL_USER_ID_FOREIGN}, DatabaseHelper.COL_EVENT_ID + " = " + eventId + ";", null, null, null, null);
+
+        com.example.nishad.tourmate.model.Event event = createEvent(cursor);
+
+        cursor.close();
+        this.close();
+
+        return event;
+    }
+
+    // Get all events of an user
+    public ArrayList<com.example.nishad.tourmate.model.Event> getAllEvents(int userId) {
         ArrayList<com.example.nishad.tourmate.model.Event> events = new ArrayList<>();
 
         this.open();
@@ -67,6 +82,32 @@ public class EventsDataSource {
         this.close();
 
         return events;
+    }
+
+    // Update an event
+    public boolean updateEvent(int eventId, com.example.nishad.tourmate.model.Event event) {
+        this.open();
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.COL_EVENT_NAME, event.getEventName());
+        values.put(DatabaseHelper.COL_BUDGET, event.getBudget());
+        values.put(DatabaseHelper.COL_FROM, event.getFrom());
+        values.put(DatabaseHelper.COL_TO, event.getTo());
+
+        int updated = database.update(DatabaseHelper.TABLE_EVENTS, values, DatabaseHelper.COL_EVENT_ID + " = " + eventId, null);
+        this.close();
+
+        return updated>0 ? true:false;
+    }
+
+    // Delete an event from the database
+    public boolean deleteEvent(int eventId) {
+        this.open();
+
+        int deleted = database.delete(DatabaseHelper.TABLE_EVENTS, DatabaseHelper.COL_EVENT_ID + " = " + eventId, null);
+        this.close();
+
+        return deleted>0 ? true:false;
     }
 
     private com.example.nishad.tourmate.model.Event createEvent(Cursor cursor) {

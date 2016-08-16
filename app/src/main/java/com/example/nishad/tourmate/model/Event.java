@@ -12,6 +12,7 @@ public class Event {
     private String to;
     private int userIdForeign;
 
+    // Constructor with id and foreign key
     public Event(int eventId, String eventName, double budget, String from, String to, int userIdForeign) {
         this.eventId = eventId;
         this.eventName = eventName;
@@ -21,6 +22,7 @@ public class Event {
         this.userIdForeign = userIdForeign;
     }
 
+    // Constructor without id and foreign key
     public Event(String eventName, double budget, String from, String to) {
         this.eventName = eventName;
         this.budget = budget;
@@ -69,5 +71,13 @@ public class Event {
 
     public void setTo(String to) {
         this.to = to;
+    }
+
+    public int getUserIdForeign() {
+        return userIdForeign;
+    }
+
+    public void setUserIdForeign(int userIdForeign) {
+        this.userIdForeign = userIdForeign;
     }
 }
