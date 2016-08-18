@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.nishad.tourmate.model.User;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nishad on 15-Aug-16.
  */
@@ -58,6 +60,25 @@ public class UsersDataSource {
         this.close();
 
         return user;
+    }
+
+    // Get all users
+    public ArrayList<String> getAllUsers() {
+        ArrayList<String> users = new ArrayList<>();
+        this.open();
+
+        Cursor cursor = database.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_USERS + ";", null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String mEmail = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EMAIL));
+            users.add(mEmail);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        this.close();
+
+        return users;
     }
 
     // Create an user from cursor data
