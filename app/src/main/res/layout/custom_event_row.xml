@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvPlaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Thakurgaon"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tvFromDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPlaceText"
+        android:text="Jan 1"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvHyphenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPlaceText"
+        android:layout_toRightOf="@+id/tvFromDate"
+        android:text=" - "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvToDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPlaceText"
+        android:layout_toRightOf="@id/tvHyphenText"
+        android:text="Dec 31"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvBudgetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="$1000"
+        android:textSize="35sp" />
+
+</RelativeLayout>
