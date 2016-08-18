@@ -38,13 +38,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String COL_EVENT_ID_FOREIGN = "EventId";
 
     // Query to create Users table
-    private static final String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID + " INTEGER PRIMARY KEY, " + COL_USER_NAME + " TEXT, " + COL_EMAIL + " TEXT, " + COL_PASSWORD + " TEXT);";
+    private static String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID + " INTEGER PRIMARY KEY, " + COL_USER_NAME + " TEXT, " + COL_EMAIL + " TEXT, " + COL_PASSWORD + " TEXT);";
 
     // Query to create Events table
-    private static final String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" + COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_BUDGET + " DOUBLE, " + COL_FROM + " TEXT, " + COL_TO + " TEXT, " + COL_USER_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + "));";
+    private static String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" + COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_FROM + " TEXT, " + COL_BUDGET + " DOUBLE, " + COL_TO + " TEXT, " + COL_USER_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + "));";
 
     // Query to create Moment table
-    private static final String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" + COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " + COL_DETAILS + " TEXT, " + COL_COST + " DOUBLE, " + COL_IMAGE_PATH + " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
+    private static String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" + COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " + COL_DETAILS + " TEXT, " + COL_COST + " DOUBLE, " + COL_IMAGE_PATH + " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
 
     // constructor
     public DatabaseHelper(Context context) {
