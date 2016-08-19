@@ -16,35 +16,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String TABLE_USERS = "Users";
     static final String COL_USER_ID = "UserId";
     static final String COL_USER_NAME = "UserName";
-    static final String COL_EMAIL = "Email";
-    static final String COL_PASSWORD= "Password";
+    static final String COL_USER_EMAIL = "Email";
+    static final String COL_USER_PASSWORD = "Password";
 
     // Events table
     static final String TABLE_EVENTS = "Events";
     static final String COL_EVENT_ID = "EventId";
     static final String COL_EVENT_NAME = "EventName";
-    static final String COL_BUDGET = "Budget";
-    static final String COL_FROM = "From";
-    static final String COL_TO = "To";
+    static final String COL_EVENT_BUDGET = "Budget";
+    static final String COL_EVENT_FROM = "FromLocation";
+    static final String COL_EVENT_TO = "ToLocation";
     static final String COL_USER_ID_FOREIGN = "UserId";
 
     // Moments table
     static final String TABLE_MOMENTS = "Moments";
     static final String COL_MOMENT_ID = "MomentId";
     static final String COL_MOMENT_TYPE = "MomentType";
-    static final String COL_DETAILS = "Details";
-    static final String COL_COST = "Cost";
-    static final String COL_IMAGE_PATH = "ImagePath";
+    static final String COL_MOMENT_DETAILS = "Details";
+    static final String COL_MOMENT_COST = "Cost";
+    static final String COL_MOMENT_IMAGE_PATH = "ImagePath";
     static final String COL_EVENT_ID_FOREIGN = "EventId";
 
     // Query to create Users table
-    private static String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID + " INTEGER PRIMARY KEY, " + COL_USER_NAME + " TEXT, " + COL_EMAIL + " TEXT, " + COL_PASSWORD + " TEXT);";
+    private static String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID +
+            " INTEGER PRIMARY KEY, " + COL_USER_NAME + " TEXT, " + COL_USER_EMAIL + " TEXT, " +
+            COL_USER_PASSWORD + " TEXT);";
 
     // Query to create Events table
-    private static String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" + COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_FROM + " TEXT, " + COL_BUDGET + " DOUBLE, " + COL_TO + " TEXT, " + COL_USER_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + "));";
+    private static String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" +
+            COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_EVENT_FROM + " TEXT, "
+            + COL_EVENT_TO + " TEXT, " + COL_EVENT_BUDGET + " DOUBLE, " + COL_USER_ID_FOREIGN +
+            " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
+            COL_USER_ID + "));";
 
     // Query to create Moment table
-    private static String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" + COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " + COL_DETAILS + " TEXT, " + COL_COST + " DOUBLE, " + COL_IMAGE_PATH + " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
+    private static String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" +
+            COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " +
+            COL_MOMENT_DETAILS + " TEXT, " + COL_MOMENT_COST + " DOUBLE, " + COL_MOMENT_IMAGE_PATH +
+            " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN +
+            ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
 
     // constructor
     public DatabaseHelper(Context context) {

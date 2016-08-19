@@ -38,8 +38,8 @@ public class UsersDataSource {
 
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_USER_NAME, user.getUserName());
-        values.put(DatabaseHelper.COL_EMAIL, user.getEmail());
-        values.put(DatabaseHelper.COL_PASSWORD, user.getPassword());
+        values.put(DatabaseHelper.COL_USER_EMAIL, user.getEmail());
+        values.put(DatabaseHelper.COL_USER_PASSWORD, user.getPassword());
 
         long inserted = database.insert(DatabaseHelper.TABLE_USERS, null, values);
 
@@ -52,7 +52,7 @@ public class UsersDataSource {
     public User getUser(String email) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID, DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_EMAIL, DatabaseHelper.COL_PASSWORD}, DatabaseHelper.COL_EMAIL + " = '" + email + "';", null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID, DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD}, DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
 
         cursor.moveToFirst();
         User user = createUser(cursor);
@@ -71,7 +71,7 @@ public class UsersDataSource {
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-            String mEmail = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EMAIL));
+            String mEmail = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_EMAIL));
             users.add(mEmail);
             cursor.moveToNext();
         }
@@ -85,8 +85,8 @@ public class UsersDataSource {
     private User createUser(Cursor cursor) {
         int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_USER_ID));
         String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_NAME));
-        String email = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EMAIL));
-        String pass= cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PASSWORD));
+        String email = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_EMAIL));
+        String pass= cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_PASSWORD));
 
         User u = new User(id, name, email, pass);
 

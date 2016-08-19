@@ -35,7 +35,7 @@ public class MomentsDataSource {
 
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_MOMENT_TYPE, moment.getMomentType());
-        values.put(DatabaseHelper.COL_DETAILS, moment.getDetail());
+        values.put(DatabaseHelper.COL_MOMENT_DETAILS, moment.getDetail());
 
         long inserted = database.insert(DatabaseHelper.TABLE_MOMENTS, null, values);
         this.close();
@@ -49,8 +49,8 @@ public class MomentsDataSource {
 
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_MOMENT_TYPE, moment.getMomentType());
-        values.put(DatabaseHelper.COL_DETAILS, moment.getDetail());
-        values.put(DatabaseHelper.COL_IMAGE_PATH, moment.getImagePath());
+        values.put(DatabaseHelper.COL_MOMENT_DETAILS, moment.getDetail());
+        values.put(DatabaseHelper.COL_MOMENT_IMAGE_PATH, moment.getImagePath());
 
         long inserted = database.insert(DatabaseHelper.TABLE_MOMENTS, null, values);
         this.close();
@@ -64,8 +64,8 @@ public class MomentsDataSource {
 
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_MOMENT_TYPE, moment.getMomentType());
-        values.put(DatabaseHelper.COL_DETAILS, moment.getDetail());
-        values.put(DatabaseHelper.COL_COST, moment.getCost());
+        values.put(DatabaseHelper.COL_MOMENT_DETAILS, moment.getDetail());
+        values.put(DatabaseHelper.COL_MOMENT_COST, moment.getCost());
 
         long inserted = database.insert(DatabaseHelper.TABLE_MOMENTS, null, values);
         this.close();
