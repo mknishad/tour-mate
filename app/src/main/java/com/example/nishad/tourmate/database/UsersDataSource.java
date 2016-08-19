@@ -52,7 +52,9 @@ public class UsersDataSource {
     public User getUser(String email) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID, DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD}, DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID,
+                DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
+                DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
 
         cursor.moveToFirst();
         User user = createUser(cursor);
@@ -62,8 +64,24 @@ public class UsersDataSource {
         return user;
     }
 
+    // Get user password from database by email
+    public String getUserPassword(String email) {
+        this.open();
+
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID,
+                DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
+                DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
+
+        cursor.moveToFirst();
+        User user = createUser(cursor);
+        cursor.close();
+        this.close();
+
+        return user.getPassword();
+    }
+
     // Get all users
-    public ArrayList<String> getAllUsers() {
+    public ArrayList<String> getAllUserEmails() {
         ArrayList<String> users = new ArrayList<>();
         this.open();
 
