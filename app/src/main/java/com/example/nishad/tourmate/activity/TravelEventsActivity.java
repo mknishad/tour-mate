@@ -12,11 +12,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.nishad.tourmate.R;
+import com.example.nishad.tourmate.adapter.EventListAdapter;
+import com.example.nishad.tourmate.database.EventsDataSource;
+import com.example.nishad.tourmate.database.UsersDataSource;
+import com.example.nishad.tourmate.model.Event;
+import com.example.nishad.tourmate.model.User;
+
+import java.util.ArrayList;
 
 public class TravelEventsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView lvTravelEvents;
+    private EventsDataSource eventsDataSource;
+    private UsersDataSource usersDataSource;
+    private String email;
+    private User user;
+    private int userId;
+    private ArrayList<com.example.nishad.tourmate.model.Event> events;
+    private ArrayAdapter<com.example.nishad.tourmate.model.Event> eventsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +42,17 @@ public class TravelEventsActivity extends AppCompatActivity
         setContentView(R.layout.activity_travel_events);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        lvTravelEvents = (ListView) findViewById(R.id.lvEventList);
+        eventsDataSource = new EventsDataSource(this);
+        usersDataSource = new UsersDataSource(this);
+        email = getIntent().getStringExtra("email");
+        user = usersDataSource.getUser(email);
+        userId = user.getUserId();
+        events = eventsDataSource.getAllEvents(userId);
+
+        eventsAdapter = new EventListAdapter(this, events);
+        lvTravelEvents.setAdapter(eventsAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

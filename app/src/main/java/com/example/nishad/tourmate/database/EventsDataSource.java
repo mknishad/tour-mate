@@ -32,7 +32,7 @@ public class EventsDataSource {
     }
 
     // Add an event to Events table
-    public boolean addEvent(com.example.nishad.tourmate.model.Event event) {
+    public boolean addEvent(int userId, com.example.nishad.tourmate.model.Event event) {
         this.open();
 
         ContentValues values = new ContentValues();
@@ -40,6 +40,7 @@ public class EventsDataSource {
         values.put(DatabaseHelper.COL_EVENT_BUDGET, event.getBudget());
         values.put(DatabaseHelper.COL_EVENT_FROM, event.getFrom());
         values.put(DatabaseHelper.COL_EVENT_TO, event.getTo());
+        values.put(DatabaseHelper.COL_USER_ID_FOREIGN, userId);
 
         long inserted = database.insert(DatabaseHelper.TABLE_EVENTS, null, values);
         this.close();
@@ -67,7 +68,7 @@ public class EventsDataSource {
 
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_USER_ID_FOREIGN}, DatabaseHelper.COL_USER_ID + " = " + userId + ";", null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_USER_ID_FOREIGN}, DatabaseHelper.COL_USER_ID_FOREIGN + " = " + userId + ";", null, null, null, null);
 
         if(cursor!=null && cursor.getCount()>0) {
             cursor.moveToFirst();
