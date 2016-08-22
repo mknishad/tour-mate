@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.nishad.tourmate.model.User;
 
@@ -42,18 +43,23 @@ public class UsersDataSource {
         values.put(DatabaseHelper.COL_USER_PASSWORD, user.getPassword());
 
         long inserted = database.insert(DatabaseHelper.TABLE_USERS, null, values);
+        if (inserted > 0) {
+            Log.e("OnAddUser: ", "User added successfully");
+        } else {
+            Log.e("OnAddUser: ", "User add failed");
+        }
 
         this.close();
 
-        return inserted>0 ? true:false;
+        return inserted > 0 ? true : false;
     }
 
     // Get user from database by email
     public User getUser(String email) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID,
-                DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[]{DatabaseHelper.COL_USER_ID,
+                        DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
                 DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
 
         cursor.moveToFirst();
@@ -68,8 +74,8 @@ public class UsersDataSource {
     public String getUserPassword(String email) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[] {DatabaseHelper.COL_USER_ID,
-                DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USERS, new String[]{DatabaseHelper.COL_USER_ID,
+                        DatabaseHelper.COL_USER_NAME, DatabaseHelper.COL_USER_EMAIL, DatabaseHelper.COL_USER_PASSWORD},
                 DatabaseHelper.COL_USER_EMAIL + " = '" + email + "';", null, null, null, null);
 
         cursor.moveToFirst();
@@ -80,18 +86,22 @@ public class UsersDataSource {
         return user.getPassword();
     }
 
-    // Get all users
-    public ArrayList<String> getAllUserEmails() {
-        ArrayList<String> users = new ArrayList<>();
+    // Get all users from database
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> users = new ArrayList<>();
         this.open();
 
-        Cursor cursor = database.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_USERS + ";", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_USERS, null);
+
+        Log.e("UserDataSource: ", "cursor.getCount() "+cursor.getCount());
 
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
-            String mEmail = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_EMAIL));
-            users.add(mEmail);
-            cursor.moveToNext();
+            for (int i=0; i<cursor.getCount(); i++) {
+                User user = createUser(cursor);
+                users.add(user);
+                cursor.moveToNext();
+            }
         }
         cursor.close();
         this.close();
@@ -104,7 +114,7 @@ public class UsersDataSource {
         int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_USER_ID));
         String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_NAME));
         String email = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_EMAIL));
-        String pass= cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_PASSWORD));
+        String pass = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_USER_PASSWORD));
 
         User u = new User(id, name, email, pass);
 

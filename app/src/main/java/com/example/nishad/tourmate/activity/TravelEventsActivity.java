@@ -1,10 +1,10 @@
 package com.example.nishad.tourmate.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,14 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.nishad.tourmate.R;
 import com.example.nishad.tourmate.adapter.EventListAdapter;
+import com.example.nishad.tourmate.constant.Constants;
 import com.example.nishad.tourmate.database.EventsDataSource;
 import com.example.nishad.tourmate.database.UsersDataSource;
-import com.example.nishad.tourmate.model.Event;
 import com.example.nishad.tourmate.model.User;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class TravelEventsActivity extends AppCompatActivity
     private String email;
     private User user;
     private int userId;
+    private String loginOrSignUp;
     private ArrayList<com.example.nishad.tourmate.model.Event> events;
     private ArrayAdapter<com.example.nishad.tourmate.model.Event> eventsAdapter;
 
@@ -46,20 +48,40 @@ public class TravelEventsActivity extends AppCompatActivity
         lvTravelEvents = (ListView) findViewById(R.id.lvEventList);
         eventsDataSource = new EventsDataSource(this);
         usersDataSource = new UsersDataSource(this);
-        email = getIntent().getStringExtra("email");
-        user = usersDataSource.getUser(email);
-        userId = user.getUserId();
-        events = eventsDataSource.getAllEvents(userId);
 
-        eventsAdapter = new EventListAdapter(this, events);
-        lvTravelEvents.setAdapter(eventsAdapter);
+        loginOrSignUp = getIntent().getStringExtra(Constants.LOGIN_OR_SIGNUP);
+
+        if (loginOrSignUp.equals("Login")) {
+            email = getIntent().getStringExtra(Constants.USER_EMAIL);
+            user = usersDataSource.getUser(email);
+            userId = user.getUserId();
+            events = eventsDataSource.getAllEvents(userId);
+
+            if (events.size() == 0) {
+                View parentLayout = findViewById(R.id.lvEventList);
+                Snackbar.make(parentLayout, "No event added",
+                        Snackbar.LENGTH_LONG).show();
+            } else {
+                // Populate events list view
+                eventsAdapter = new EventListAdapter(this, events);
+                lvTravelEvents.setAdapter(eventsAdapter);
+            }
+        } else if (loginOrSignUp.equals("SignUp")){
+            email = getIntent().getStringExtra(Constants.USER_EMAIL);
+            user = usersDataSource.getUser(email);
+            userId = user.getUserId();
+            events = eventsDataSource.getAllEvents(userId);
+
+            View parentLayout = findViewById(R.id.lvEventList);
+            Snackbar.make(parentLayout, "No event added", Snackbar.LENGTH_LONG).show();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(TravelEventsActivity.this, AddEventActivity.class);
+                startActivity(intent);
             }
         });
 
