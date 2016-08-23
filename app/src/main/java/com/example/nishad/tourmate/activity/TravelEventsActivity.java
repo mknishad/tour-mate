@@ -49,14 +49,13 @@ public class TravelEventsActivity extends AppCompatActivity
         eventsDataSource = new EventsDataSource(this);
         usersDataSource = new UsersDataSource(this);
 
-        loginOrSignUp = getIntent().getStringExtra(Constants.LOGIN_OR_SIGNUP);
+        loginOrSignUp = getIntent().getStringExtra(Constants.LOGIN_SIGNUP_ADD_EVENT);
+        email = getIntent().getStringExtra(Constants.USER_EMAIL);
+        user = usersDataSource.getUser(email);
+        userId = user.getUserId();
+        events = eventsDataSource.getAllEvents(userId);
 
         if (loginOrSignUp.equals("Login")) {
-            email = getIntent().getStringExtra(Constants.USER_EMAIL);
-            user = usersDataSource.getUser(email);
-            userId = user.getUserId();
-            events = eventsDataSource.getAllEvents(userId);
-
             if (events.size() == 0) {
                 View parentLayout = findViewById(R.id.lvEventList);
                 Snackbar.make(parentLayout, "No event added",
@@ -67,13 +66,24 @@ public class TravelEventsActivity extends AppCompatActivity
                 lvTravelEvents.setAdapter(eventsAdapter);
             }
         } else if (loginOrSignUp.equals("SignUp")){
-            email = getIntent().getStringExtra(Constants.USER_EMAIL);
+            /*email = getIntent().getStringExtra(Constants.USER_EMAIL);
             user = usersDataSource.getUser(email);
             userId = user.getUserId();
-            events = eventsDataSource.getAllEvents(userId);
+            events = eventsDataSource.getAllEvents(userId);*/
 
+            // Populate event list view
             View parentLayout = findViewById(R.id.lvEventList);
             Snackbar.make(parentLayout, "No event added", Snackbar.LENGTH_LONG).show();
+        } else if (loginOrSignUp.equals("AddEvent")) {
+            if (events.size() == 0) {
+                View parentLayout = findViewById(R.id.lvEventList);
+                Snackbar.make(parentLayout, "No event added",
+                        Snackbar.LENGTH_LONG).show();
+            } else {
+                // Populate events list view
+                eventsAdapter = new EventListAdapter(this, events);
+                lvTravelEvents.setAdapter(eventsAdapter);
+            }
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -81,6 +91,7 @@ public class TravelEventsActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TravelEventsActivity.this, AddEventActivity.class);
+                intent.putExtra(Constants.USER_EMAIL, email);
                 startActivity(intent);
             }
         });

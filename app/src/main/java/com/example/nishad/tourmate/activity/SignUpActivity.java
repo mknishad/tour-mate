@@ -71,7 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
                         usersDataSource.addUser(user);
                         Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, TravelEventsActivity.class);
-                        intent.putExtra(Constants.LOGIN_OR_SIGNUP, "SignUp");
+                        intent.putExtra(Constants.LOGIN_SIGNUP_ADD_EVENT, "SignUp");
                         intent.putExtra(Constants.USER_EMAIL, emailText);
                         startActivity(intent);
                     }

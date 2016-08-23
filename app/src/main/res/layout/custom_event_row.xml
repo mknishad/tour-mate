@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Thakurgaon"
-        android:textSize="40sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/tvFromDate"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvPlaceText"
         android:text="Jan 1"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tvHyphenText"
@@ -29,7 +29,7 @@
         android:layout_below="@+id/tvPlaceText"
         android:layout_toRightOf="@+id/tvFromDate"
         android:text=" - "
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tvToDate"
@@ -38,7 +38,7 @@
         android:layout_below="@id/tvPlaceText"
         android:layout_toRightOf="@id/tvHyphenText"
         android:text="Dec 31"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tvBudgetText"
@@ -47,6 +47,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:text="$1000"
-        android:textSize="35sp" />
+        android:textSize="25sp" />
 
 </RelativeLayout>

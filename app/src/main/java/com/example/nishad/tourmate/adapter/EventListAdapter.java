@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.nishad.tourmate.R;
-import com.example.nishad.tourmate.model.Event;
 
 import java.util.ArrayList;
 
@@ -55,8 +54,8 @@ public class EventListAdapter extends ArrayAdapter<com.example.nishad.tourmate.m
 
         // set contents to the views
         viewHolder.tvPlaceText.setText(events.get(position).getEventName());
-        viewHolder.tvFromDate.setText(events.get(position).getFrom());
-        viewHolder.tvToDate.setText(events.get(position).getTo());
+        viewHolder.tvFromDate.setText(events.get(position).getFromDate());
+        viewHolder.tvToDate.setText(events.get(position).getToDate());
         viewHolder.tvBudget.setText(String.valueOf(events.get(position).getBudget()));
 
         return convertView;

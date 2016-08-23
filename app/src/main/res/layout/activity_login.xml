@@ -1,60 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activity.LoginActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:src="@drawable/tourmate"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginTop="8dp"
         android:hint="Email"
-        android:textSize="30dp"
-        />
+        android:inputType="textEmailAddress"
+        android:textSize="25dp"/>
 
     <EditText
         android:id="@+id/loginPassword"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/loginEmail"
         android:hint="Password"
-        android:textSize="30dp"
-        android:layout_below="@id/loginEmail"/>
+        android:inputType="textPassword"
+        android:textSize="25dp"/>
+
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/loginPassword"
+        android:layout_marginTop="18dp"
+        android:onClick="login"
         android:text="Login"
         android:textAllCaps="false"
-        android:textSize="30sp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn"
-        android:onClick="login"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/loginPassword"
-        android:layout_alignParentRight="true"/>
+        android:textSize="25sp"/>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:inputType="textEmailAddress"
-        android:layout_alignParentBottom="true"
         android:id="@+id/noAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
         android:text="Have no account?"
-        android:textSize="25dp"
-        android:layout_height="wrap_content" />
+        android:textSize="20dp"/>
+
     <TextView
         android:layout_width="wrap_content"
-        android:inputType="textEmailAddress"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/noAccount"
         android:layout_marginTop="10dp"
-        android:textColor="#0daeff"
-        android:text=" Sign Up"
+        android:layout_toRightOf="@+id/noAccount"
+        android:inputType="textEmailAddress"
         android:onClick="goToSignUp"
-        android:textSize="25dp"
-        android:layout_height="wrap_content" />
+        android:text=" Sign Up"
+        android:textColor="#0daeff"
+        android:textSize="20dp"/>
 </RelativeLayout>

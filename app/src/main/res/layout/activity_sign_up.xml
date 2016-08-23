@@ -9,13 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.SignUpActivity">
 
+    <ImageView
+        android:id="@+id/ivSignUpLogo"
+        android:src="@drawable/tourmate"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ivSignUpLogo"
+        android:layout_marginTop="8dp"
         android:hint="Enter Name"
         android:inputType="text"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/loginEmail"
@@ -23,9 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
-        android:layout_marginTop="10dp"
         android:hint="Enter email"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -33,26 +41,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/loginEmail"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
         android:hint="Enter Password"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
     <EditText
         android:layout_width="match_parent"
         android:id="@+id/signUpRepassword"
         android:layout_height="wrap_content"
         android:layout_below="@id/signUpPassword"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
         android:hint="Retype Password"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:onClick="signUp"
         android:textAllCaps="false"
-        android:textSize="30dp"
-        android:layout_marginTop="32dp"
+        android:textSize="25dp"
         android:layout_below="@+id/signUpRepassword"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

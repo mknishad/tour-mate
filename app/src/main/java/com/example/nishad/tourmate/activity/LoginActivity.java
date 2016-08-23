@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (passwordText.equals(userPassword)) {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, TravelEventsActivity.class);
-                    intent.putExtra(Constants.LOGIN_OR_SIGNUP, "Login");
+                    intent.putExtra(Constants.LOGIN_SIGNUP_ADD_EVENT, "Login");
                     intent.putExtra(Constants.USER_EMAIL, emailText);
                     startActivity(intent);
                 } else {

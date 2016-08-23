@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nishad.tourmate">
+          package="com.example.nishad.tourmate">
 
     <application
         android:allowBackup="true"
@@ -10,27 +10,25 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.TravelEventsActivity"
             android:label="Sign Up"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.SignUpActivity" />
-        <activity
-            android:name=".activity.AddEventActivity"
-            android:label="@string/title_activity_add_event"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.SignUpActivity"/>
         <activity
             android:name=".activity.MomentsActivity"
             android:label="@string/title_activity_moments"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.AddMomentPhotoActivity" />
-        <activity android:name=".activity.AddMomentExpenseActivity" />
-        <activity android:name=".activity.AddMomentStatusActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.AddMomentPhotoActivity"/>
+        <activity android:name=".activity.AddMomentExpenseActivity"/>
+        <activity android:name=".activity.AddMomentStatusActivity"/>
+        <activity android:name=".activity.AddEventActivity">
+        </activity>
     </application>
 
 </manifest>

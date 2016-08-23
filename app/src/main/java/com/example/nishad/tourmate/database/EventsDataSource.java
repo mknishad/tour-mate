@@ -38,8 +38,8 @@ public class EventsDataSource {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_EVENT_NAME, event.getEventName());
         values.put(DatabaseHelper.COL_EVENT_BUDGET, event.getBudget());
-        values.put(DatabaseHelper.COL_EVENT_FROM, event.getFrom());
-        values.put(DatabaseHelper.COL_EVENT_TO, event.getTo());
+        values.put(DatabaseHelper.COL_EVENT_FROM, event.getFromDate());
+        values.put(DatabaseHelper.COL_EVENT_TO, event.getToDate());
         values.put(DatabaseHelper.COL_USER_ID_FOREIGN, userId);
 
         long inserted = database.insert(DatabaseHelper.TABLE_EVENTS, null, values);
@@ -92,8 +92,8 @@ public class EventsDataSource {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_EVENT_NAME, event.getEventName());
         values.put(DatabaseHelper.COL_EVENT_BUDGET, event.getBudget());
-        values.put(DatabaseHelper.COL_EVENT_FROM, event.getFrom());
-        values.put(DatabaseHelper.COL_EVENT_TO, event.getTo());
+        values.put(DatabaseHelper.COL_EVENT_FROM, event.getFromDate());
+        values.put(DatabaseHelper.COL_EVENT_TO, event.getToDate());
 
         int updated = database.update(DatabaseHelper.TABLE_EVENTS, values, DatabaseHelper.COL_EVENT_ID + " = " + eventId, null);
         this.close();

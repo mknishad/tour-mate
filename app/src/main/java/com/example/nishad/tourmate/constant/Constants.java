@@ -5,7 +5,8 @@ package com.example.nishad.tourmate.constant;
  */
 public class Constants {
 
-    public static final String LOGIN_OR_SIGNUP = "loginOrSignUp";
+    public static final String LOGIN_SIGNUP_ADD_EVENT = "loginOrSignUp";
     public static final String USER_EMAIL = "userEmail";
+    public static final String USER_ID = "userId";
 
 }
