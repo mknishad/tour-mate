@@ -17,17 +17,18 @@
         </activity>
         <activity
             android:name=".activity.TravelEventsActivity"
-            android:label="Sign Up"
+            android:label="Travel Events"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.SignUpActivity"/>
-        <activity
-            android:name=".activity.MomentsActivity"
-            android:label="@string/title_activity_moments"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.AddMomentPhotoActivity"/>
         <activity android:name=".activity.AddMomentExpenseActivity"/>
         <activity android:name=".activity.AddMomentStatusActivity"/>
         <activity android:name=".activity.AddEventActivity">
+        </activity>
+        <activity
+            android:name=".activity.MomentsActivity"
+            android:label="@string/title_activity_moments"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 
