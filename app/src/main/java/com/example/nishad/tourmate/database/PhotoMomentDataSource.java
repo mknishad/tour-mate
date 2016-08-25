@@ -50,7 +50,7 @@ public class PhotoMomentDataSource {
         return inserted>0 ? true:false;
     }
 
-    // Getting single contact
+    // Getting single PhotoMoment
     public PhotoMoment getPhotoMoment(int id) {
         this.open();
 
@@ -70,7 +70,7 @@ public class PhotoMomentDataSource {
 
     }
 
-    // Getting All Contacts
+    // Getting All PhotoMoments
     public ArrayList<PhotoMoment> getAllPhotoMoments(int eventId) {
         ArrayList<PhotoMoment> photoMomentList = new ArrayList<>();
         this.open();
@@ -94,7 +94,7 @@ public class PhotoMomentDataSource {
         cursor.close();
         // close inserting data from database
         this.close();
-        // return contact list
+
         return photoMomentList;
     }
 
@@ -102,10 +102,10 @@ public class PhotoMomentDataSource {
         int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_ID));
         String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_CAPTION));
         byte[] image = cursor.getBlob(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_IMAGE));
-        int userIdForeign = cursor.getInt(cursor.getColumnIndex(DatabaseHelper
+        int eventIdForeign = cursor.getInt(cursor.getColumnIndex(DatabaseHelper
                 .COL_PHOTO_MOMENT_EVENT_ID_FOREIGN));
 
-        PhotoMoment photoMoment = new PhotoMoment(id, name, image, userIdForeign);
+        PhotoMoment photoMoment = new PhotoMoment(id, name, image, eventIdForeign);
 
         return photoMoment;
     }
