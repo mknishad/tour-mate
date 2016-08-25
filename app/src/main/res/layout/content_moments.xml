@@ -17,7 +17,7 @@
             android:id="@+id/rlEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#DDDDDD"
+            android:background="@color/colorPrimary"
             android:padding="2dp">
 
             <TextView
@@ -27,6 +27,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="4dp"
                 android:text="Event Name"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"/>
 
             <TextView
@@ -36,6 +37,7 @@
                 android:layout_below="@+id/tvEventName"
                 android:layout_centerHorizontal="true"
                 android:text=" - "
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
@@ -46,6 +48,7 @@
                 android:layout_toLeftOf="@+id/tvEventHyphen"
                 android:gravity="center_horizontal"
                 android:text="1/1/2016"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
@@ -56,6 +59,7 @@
                 android:layout_toRightOf="@+id/tvEventHyphen"
                 android:gravity="center_horizontal"
                 android:text="31/12/2016"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
@@ -66,6 +70,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text=": "
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
@@ -76,6 +81,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_toLeftOf="@+id/tvEventColon"
                 android:text="Budget"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
@@ -86,6 +92,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_toRightOf="@+id/tvEventColon"
                 android:text="$300"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
         </RelativeLayout>
@@ -95,9 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/rlEvent"
-            android:padding="2dp"
-            android:layout_marginBottom="40dp"
-            android:background="#EEEEEE">
+            android:padding="2dp">
         </ListView>
 
 </RelativeLayout>

@@ -30,6 +30,7 @@
     <Button
         android:id="@+id/btnSaveCostEvent"
         android:layout_below="@+id/etCostAmount"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:text="Save"
@@ -37,7 +38,21 @@
         android:textSize="25sp"
         android:textAllCaps="false"
         android:onClick="save"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnCancelCostEvent"
+        android:layout_below="@+id/etCostAmount"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Cancel"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textAllCaps="false"
+        android:onClick="cancel"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"/>
 
 </RelativeLayout>

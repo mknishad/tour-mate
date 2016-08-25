@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.nishad.tourmate">
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,8 @@
             android:name=".activity.MomentsActivity"
             android:label="@string/title_activity_moments"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activity.ExpenseActivity">
         </activity>
     </application>
 

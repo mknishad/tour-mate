@@ -92,7 +92,10 @@ public class MomentsActivity extends AppCompatActivity
                             startActivity(intent);
                             dialog.dismiss();
                         } else {
-
+                            Intent intent = new Intent(MomentsActivity.this, AddMomentExpenseActivity.class);
+                            intent.putExtra(Constants.EVENT_ID, eventId);
+                            startActivity(intent);
+                            dialog.dismiss();
                         }
                     }
                 });

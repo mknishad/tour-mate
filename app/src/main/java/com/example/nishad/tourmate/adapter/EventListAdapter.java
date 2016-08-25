@@ -56,7 +56,7 @@ public class EventListAdapter extends ArrayAdapter<com.example.nishad.tourmate.m
         viewHolder.tvPlaceText.setText(events.get(position).getEventName());
         viewHolder.tvFromDate.setText(events.get(position).getFromDate());
         viewHolder.tvToDate.setText(events.get(position).getToDate());
-        viewHolder.tvBudget.setText(String.valueOf(events.get(position).getBudget()));
+        viewHolder.tvBudget.setText("$" + String.valueOf(events.get(position).getBudget()));
 
         return convertView;
     }

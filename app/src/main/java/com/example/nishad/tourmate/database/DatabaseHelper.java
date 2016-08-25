@@ -65,7 +65,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Query to create Expense table
     private static String CREATE_EXPENSE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_EXPENSE_MOMENT + "("
             + COL_EXPENSE_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_EXPENSE_MOMENT_TITLE + " " +
-            "TEXT, " + COL_EXPENSE_MOMENT_AMOUNT + " DOUBLE " + COL_EXPENSE_MOMENT_EVENT_ID_FOREIGN + " INTEGER, " +
+            "TEXT, " + COL_EXPENSE_MOMENT_AMOUNT + " DOUBLE, " +
+            COL_EXPENSE_MOMENT_EVENT_ID_FOREIGN + " INTEGER, " +
             "FOREIGN KEY(" + COL_PHOTO_MOMENT_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" +
             COL_EVENT_ID + "));";
 

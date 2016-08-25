@@ -8,15 +8,12 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nishad.tourmate.R;
 import com.example.nishad.tourmate.constant.Constants;
-import com.example.nishad.tourmate.database.EventsDataSource;
 import com.example.nishad.tourmate.database.PhotoMomentDataSource;
 import com.example.nishad.tourmate.model.PhotoMoment;
 
@@ -25,14 +22,10 @@ import java.io.ByteArrayOutputStream;
 public class AddMomentPhotoActivity extends AppCompatActivity {
 
     private PhotoMomentDataSource photoMomentDataSource;
-     private EventsDataSource eventsDataSource;
     private int eventId;
-    private TextView tvMessage;
     private ImageView ivPhoto;
     private EditText etCaption;
-    private Button btnSave;
-    private Button btnCancel;
-    private Bitmap yourImage;
+    private Bitmap yourImage = null;
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -42,7 +35,6 @@ public class AddMomentPhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_moment_photo);
 
         photoMomentDataSource = new PhotoMomentDataSource(this);
-        eventsDataSource = new EventsDataSource(this);
         eventId = getIntent().getIntExtra(Constants.EVENT_ID, 0);
 
         findView();
@@ -53,11 +45,8 @@ public class AddMomentPhotoActivity extends AppCompatActivity {
     }
 
     private void findView() {
-        tvMessage = (TextView) findViewById(R.id.tvMessage);
         ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
         etCaption = (EditText) findViewById(R.id.etCaption);
-        btnSave = (Button) findViewById(R.id.btnSavePhoto);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
     }
 
     // Check if the user has a camera
@@ -87,21 +76,33 @@ public class AddMomentPhotoActivity extends AppCompatActivity {
         }
     }
 
-    public void Save(View view) {
-        // convert bitmap to byte
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte imageInByte[] = stream.toByteArray();
-
+    public void save(View view) {
         String caption = etCaption.getText().toString();
 
-        // Inserting Contacts
-        Log.d("Insert: ", "Inserting ..");
-        boolean inserted = photoMomentDataSource.addPhotoMoment(new PhotoMoment(caption,
-                imageInByte, eventId));
-        if (inserted)
-            Toast.makeText(this, "Moment inserted", Toast.LENGTH_SHORT).show();
-        this.finish();
+        if (yourImage != null) {
+            if (!caption.equals("")) {
+                // convert bitmap to byte
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                yourImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte imageInByte[] = stream.toByteArray();
+
+
+                Log.d("Insert: ", "Inserting ..");
+                boolean inserted = photoMomentDataSource.addPhotoMoment(new PhotoMoment(caption,
+                        imageInByte, eventId));
+                if (inserted) {
+                    Toast.makeText(this, "Your moment inserted successfully", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(this, "Moment insertion failed", Toast.LENGTH_SHORT).show();
+                }
+                this.finish();
+            } else {
+                Toast.makeText(this, "Enter a caption", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Capture a photo to save", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void cancel(View view) {
