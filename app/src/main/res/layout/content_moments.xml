@@ -14,14 +14,14 @@
     tools:showIn="@layout/app_bar_moments">
 
         <RelativeLayout
-            android:id="@+id/rlEvent"
+            android:id="@+id/rlExpenseEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:padding="2dp">
 
             <TextView
-                android:id="@+id/tvEventName"
+                android:id="@+id/tvExpenseEventName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -31,42 +31,42 @@
                 android:textSize="30sp"/>
 
             <TextView
-                android:id="@+id/tvEventHyphen"
+                android:id="@+id/tvExpenseEventHyphen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvEventName"
+                android:layout_below="@+id/tvExpenseEventName"
                 android:layout_centerHorizontal="true"
                 android:text=" - "
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/tvEventFrom"
+                android:id="@+id/tvExpenseEventFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvEventName"
-                android:layout_toLeftOf="@+id/tvEventHyphen"
+                android:layout_below="@+id/tvExpenseEventName"
+                android:layout_toLeftOf="@+id/tvExpenseEventHyphen"
                 android:gravity="center_horizontal"
                 android:text="1/1/2016"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/tvEventTo"
+                android:id="@+id/tvExpenseEventTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvEventName"
-                android:layout_toRightOf="@+id/tvEventHyphen"
+                android:layout_below="@+id/tvExpenseEventName"
+                android:layout_toRightOf="@+id/tvExpenseEventHyphen"
                 android:gravity="center_horizontal"
                 android:text="31/12/2016"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/tvEventColon"
+                android:id="@+id/tvExpenseEventColon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvEventFrom"
+                android:layout_below="@id/tvExpenseEventFrom"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
                 android:text=": "
@@ -74,23 +74,23 @@
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/tvEventBudget"
+                android:id="@+id/tvExpenseEventBudget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvEventFrom"
+                android:layout_below="@id/tvExpenseEventFrom"
                 android:layout_marginTop="4dp"
-                android:layout_toLeftOf="@+id/tvEventColon"
+                android:layout_toLeftOf="@+id/tvExpenseEventColon"
                 android:text="Budget"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/tvEventBudgetAmount"
+                android:id="@+id/tvExpenseEventBudgetAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/tvEventBudget"
+                android:layout_alignBaseline="@+id/tvExpenseEventBudget"
                 android:layout_centerHorizontal="true"
-                android:layout_toRightOf="@+id/tvEventColon"
+                android:layout_toRightOf="@+id/tvExpenseEventColon"
                 android:text="$300"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"/>
@@ -101,7 +101,7 @@
             android:id="@+id/lvMomentList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rlEvent"
+            android:layout_below="@id/rlExpenseEvent"
             android:padding="2dp">
         </ListView>
 

@@ -34,7 +34,6 @@ public class MomentsActivity extends AppCompatActivity
 
     private EventsDataSource eventsDataSource;
     private PhotoMomentDataSource photoMomentDataSource;
-    private String userEmail;
     private Event event;
     private int eventId;
     private String eventName;
@@ -56,7 +55,6 @@ public class MomentsActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        userEmail = getIntent().getStringExtra(Constants.USER_EMAIL);
         eventId = getIntent().getIntExtra(Constants.EVENT_ID, 0);
         eventsDataSource = new EventsDataSource(this);
         photoMomentDataSource = new PhotoMomentDataSource(this);
@@ -139,10 +137,10 @@ public class MomentsActivity extends AppCompatActivity
     }
 
     private void findView() {
-        tvEventName = (TextView) findViewById(R.id.tvEventName);
-        tvEventFrom = (TextView) findViewById(R.id.tvEventFrom);
-        tvEventTo = (TextView) findViewById(R.id.tvEventTo);
-        tvEventBudgetAmount = (TextView) findViewById(R.id.tvEventBudgetAmount);
+        tvEventName = (TextView) findViewById(R.id.tvExpenseEventName);
+        tvEventFrom = (TextView) findViewById(R.id.tvExpenseEventFrom);
+        tvEventTo = (TextView) findViewById(R.id.tvExpenseEventTo);
+        tvEventBudgetAmount = (TextView) findViewById(R.id.tvExpenseEventBudgetAmount);
         lvMomentList = (ListView) findViewById(R.id.lvMomentList);
     }
 

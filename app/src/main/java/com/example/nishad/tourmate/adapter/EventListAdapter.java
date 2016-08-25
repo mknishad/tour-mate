@@ -26,7 +26,7 @@ public class EventListAdapter extends ArrayAdapter<com.example.nishad.tourmate.m
     }
 
     // view holder class
-    private class ViewHolder {
+    private static class ViewHolder {
         TextView tvPlaceText;
         TextView tvFromDate;
         TextView tvToDate;
