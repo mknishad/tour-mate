@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.nishad.tourmate">
 
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +24,6 @@
         <activity android:name=".activity.SignUpActivity"/>
         <activity android:name=".activity.AddMomentPhotoActivity"/>
         <activity android:name=".activity.AddMomentExpenseActivity"/>
-        <activity android:name=".activity.AddMomentStatusActivity"/>
         <activity android:name=".activity.AddEventActivity">
         </activity>
         <activity

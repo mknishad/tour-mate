@@ -114,7 +114,7 @@ public class TravelEventsActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(TravelEventsActivity.this, MomentsActivity.class);
                 intent.putExtra(Constants.USER_EMAIL, email);
-                intent.putExtra("eventId", events.get(position).getEventId());
+                intent.putExtra(Constants.EVENT_ID, events.get(position).getEventId());
                 startActivity(intent);
             }
         });

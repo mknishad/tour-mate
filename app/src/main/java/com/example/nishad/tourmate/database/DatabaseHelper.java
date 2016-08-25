@@ -3,6 +3,7 @@ package com.example.nishad.tourmate.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by Nishad on 15-Aug-16.
@@ -37,6 +38,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String COL_MOMENT_IMAGE_PATH = "ImagePath";
     static final String COL_EVENT_ID_FOREIGN = "EventId";
 
+    // PhotoMoment table
+    static final String TABLE_PHOTO_MOMENT = "PhotoMoment";
+
+    // Contacts Table Columns names
+    static final String KEY_ID = "Id";
+    static final String KEY_NAME = "Name";
+    static final String KEY_IMAGE = "Image";
+    static final String KEY_EVENT_ID_FOREIGN = "EventId";
+
     // Query to create Users table
     private static String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID +
             " INTEGER PRIMARY KEY, " + COL_USER_NAME + " TEXT, " + COL_USER_EMAIL + " TEXT, " +
@@ -49,30 +59,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
             COL_USER_ID + "));";
 
+    /*
     // Query to create Moment table
     private static String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" +
             COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " +
             COL_MOMENT_DETAILS + " TEXT, " + COL_MOMENT_COST + " DOUBLE, " + COL_MOMENT_IMAGE_PATH +
             " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN +
             ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
+    */
+
+    // Query to create PhotoMoment table
+    private static String CREATE_PHOTO_MOMENT_TABLE = "CREATE TABLE " + TABLE_PHOTO_MOMENT + "("
+            + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, "
+            + KEY_IMAGE + " BLOB, " + KEY_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" +
+            KEY_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
 
     // constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.e("DATABASE", " constructor: " + " tables created");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_EVENTS_TABLE);
-        db.execSQL(CREATE_MOMENTS_TABLE);
+//        db.execSQL(CREATE_MOMENTS_TABLE);
+        db.execSQL(CREATE_PHOTO_MOMENT_TABLE);
+        Log.e("DATABASE", "onCreate: " + " tables created");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOMENTS);
+//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PHOTO_MOMENT);
         onCreate(db);
     }
 

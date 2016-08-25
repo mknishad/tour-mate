@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.example.nishad.tourmate.model.Event;
 
 import java.util.ArrayList;
 
@@ -14,7 +17,7 @@ public class EventsDataSource {
 
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase database;
-    com.example.nishad.tourmate.model.Event event;
+    Event event;
 
     // Initialize database helper in constructor
     public EventsDataSource(Context context) {
@@ -32,7 +35,7 @@ public class EventsDataSource {
     }
 
     // Add an event to Events table
-    public boolean addEvent(int userId, com.example.nishad.tourmate.model.Event event) {
+    public boolean addEvent(int userId, Event event) {
         this.open();
 
         ContentValues values = new ContentValues();
@@ -49,12 +52,13 @@ public class EventsDataSource {
     }
 
     // Get a single event
-    public com.example.nishad.tourmate.model.Event getEvent(int eventId) {
+    public Event getEvent(int eventId) {
         this.open();
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_USER_ID_FOREIGN}, DatabaseHelper.COL_EVENT_ID + " = " + eventId + ";", null, null, null, null);
 
-        com.example.nishad.tourmate.model.Event event = createEvent(cursor);
+        cursor.moveToFirst();
+        Event event = createEvent(cursor);
 
         cursor.close();
         this.close();
@@ -63,8 +67,8 @@ public class EventsDataSource {
     }
 
     // Get all events of an user
-    public ArrayList<com.example.nishad.tourmate.model.Event> getAllEvents(int userId) {
-        ArrayList<com.example.nishad.tourmate.model.Event> events = new ArrayList<>();
+    public ArrayList<Event> getAllEvents(int userId) {
+        ArrayList<Event> events = new ArrayList<>();
 
         this.open();
 
@@ -86,7 +90,7 @@ public class EventsDataSource {
     }
 
     // Update an event
-    public boolean updateEvent(int eventId, com.example.nishad.tourmate.model.Event event) {
+    public boolean updateEvent(int eventId, Event event) {
         this.open();
 
         ContentValues values = new ContentValues();
@@ -111,15 +115,16 @@ public class EventsDataSource {
         return deleted>0 ? true:false;
     }
 
-    private com.example.nishad.tourmate.model.Event createEvent(Cursor cursor) {
-        int eventId = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_ID));
+    private Event createEvent(Cursor cursor) {
+        Log.e("createEvent", "cursor.getcount() "+cursor.getCount());
+        int eventIdKey = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_ID));
         String eventName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_NAME));
         double budget = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_BUDGET));
         String from = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_FROM));
         String to = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_TO));
         int userIdForeign = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_USER_ID_FOREIGN));
 
-        com.example.nishad.tourmate.model.Event event = new com.example.nishad.tourmate.model.Event(eventId, eventName, budget, from, to, userIdForeign);
+        Event event = new Event(eventIdKey, eventName, budget, from, to, userIdForeign);
 
         return event;
     }

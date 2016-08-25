@@ -7,17 +7,19 @@
     <TextView
         android:id="@+id/tvMomentDetails"
         android:text="Sample text for moment details"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:gravity="center_vertical"
         android:layout_weight="1"
-        android:minHeight="120dp"
+        android:minHeight="100dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 
     <ImageView
-        android:id="@+id/tvMomentImage"
+        android:id="@+id/ivMomentImage"
         android:src="@drawable/default_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"/>
+        android:scaleType="fitXY"
+        android:padding="2dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
 
 </LinearLayout>
