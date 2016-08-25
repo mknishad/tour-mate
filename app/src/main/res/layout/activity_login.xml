@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,8 +12,9 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:src="@drawable/tourmate"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/tourmate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -25,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textSize="25dp"/>
+        android:textSize="25sp"/>
 
     <EditText
         android:id="@+id/loginPassword"
@@ -34,17 +35,18 @@
         android:layout_below="@id/loginEmail"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textSize="25dp"/>
+        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
         android:layout_below="@+id/loginPassword"
-        android:layout_marginTop="18dp"
         android:onClick="login"
         android:text="Login"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:textSize="25sp"/>
 

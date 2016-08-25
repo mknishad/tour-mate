@@ -39,9 +39,9 @@ public class PhotoMomentDataSource {
         this.open();
 
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.KEY_NAME, photoMoment.getName()); // Contact Name
-        values.put(DatabaseHelper.KEY_IMAGE, photoMoment.getImage()); // Contact Photo
-        values.put(DatabaseHelper.KEY_EVENT_ID_FOREIGN, photoMoment.get_userIdForeign());
+        values.put(DatabaseHelper.COL_PHOTO_MOMENT_CAPTION, photoMoment.getName()); // Contact Name
+        values.put(DatabaseHelper.COL_PHOTO_MOMENT_IMAGE, photoMoment.getImage()); // Contact Photo
+        values.put(DatabaseHelper.COL_PHOTO_MOMENT_EVENT_ID_FOREIGN, photoMoment.get_userIdForeign());
 
         // Inserting Row
         long inserted = database.insert(DatabaseHelper.TABLE_PHOTO_MOMENT, null, values);
@@ -55,7 +55,7 @@ public class PhotoMomentDataSource {
         this.open();
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_PHOTO_MOMENT, new String[] {
-                DatabaseHelper.KEY_ID, DatabaseHelper.KEY_NAME, DatabaseHelper.KEY_IMAGE, DatabaseHelper.KEY_EVENT_ID_FOREIGN }, DatabaseHelper.KEY_ID + " = " + id, null, null, null, null);
+                DatabaseHelper.COL_PHOTO_MOMENT_ID, DatabaseHelper.COL_PHOTO_MOMENT_CAPTION, DatabaseHelper.COL_PHOTO_MOMENT_IMAGE, DatabaseHelper.COL_PHOTO_MOMENT_EVENT_ID_FOREIGN}, DatabaseHelper.COL_PHOTO_MOMENT_ID + " = " + id, null, null, null, null);
         if (cursor != null)
 
             cursor.moveToFirst();
@@ -76,8 +76,8 @@ public class PhotoMomentDataSource {
         this.open();
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_PHOTO_MOMENT, new String[]
-                {DatabaseHelper.KEY_ID, DatabaseHelper.KEY_NAME, DatabaseHelper.KEY_IMAGE,
-                        DatabaseHelper.KEY_EVENT_ID_FOREIGN}, DatabaseHelper.KEY_EVENT_ID_FOREIGN
+                {DatabaseHelper.COL_PHOTO_MOMENT_ID, DatabaseHelper.COL_PHOTO_MOMENT_CAPTION, DatabaseHelper.COL_PHOTO_MOMENT_IMAGE,
+                        DatabaseHelper.COL_PHOTO_MOMENT_EVENT_ID_FOREIGN}, DatabaseHelper.COL_PHOTO_MOMENT_EVENT_ID_FOREIGN
                 + " = " + eventId + ";", null, null, null, null);
 
         Log.e("PHOTO_MOMENTS_DATA", "getAllPhotoMoments: " + cursor.getCount());
@@ -99,11 +99,11 @@ public class PhotoMomentDataSource {
     }
 
     private PhotoMoment createPhotoMoment(Cursor cursor) {
-        int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_ID));
-        String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_NAME));
-        byte[] image = cursor.getBlob(cursor.getColumnIndex(DatabaseHelper.KEY_IMAGE));
+        int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_ID));
+        String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_CAPTION));
+        byte[] image = cursor.getBlob(cursor.getColumnIndex(DatabaseHelper.COL_PHOTO_MOMENT_IMAGE));
         int userIdForeign = cursor.getInt(cursor.getColumnIndex(DatabaseHelper
-                .KEY_EVENT_ID_FOREIGN));
+                .COL_PHOTO_MOMENT_EVENT_ID_FOREIGN));
 
         PhotoMoment photoMoment = new PhotoMoment(id, name, image, userIdForeign);
 

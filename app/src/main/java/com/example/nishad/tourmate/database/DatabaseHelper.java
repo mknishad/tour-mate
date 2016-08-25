@@ -27,25 +27,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String COL_EVENT_BUDGET = "Budget";
     static final String COL_EVENT_FROM = "FromDate";
     static final String COL_EVENT_TO = "ToDate";
-    static final String COL_USER_ID_FOREIGN = "UserId";
-
-    // Moments table
-    static final String TABLE_MOMENTS = "Moments";
-    static final String COL_MOMENT_ID = "MomentId";
-    static final String COL_MOMENT_TYPE = "MomentType";
-    static final String COL_MOMENT_DETAILS = "Details";
-    static final String COL_MOMENT_COST = "Cost";
-    static final String COL_MOMENT_IMAGE_PATH = "ImagePath";
-    static final String COL_EVENT_ID_FOREIGN = "EventId";
+    static final String COL_EVENT_USER_ID_FOREIGN = "UserId";
 
     // PhotoMoment table
-    static final String TABLE_PHOTO_MOMENT = "PhotoMoment";
-
+    static final String TABLE_PHOTO_MOMENT = "PhotoMoments";
     // Contacts Table Columns names
-    static final String KEY_ID = "Id";
-    static final String KEY_NAME = "Name";
-    static final String KEY_IMAGE = "Image";
-    static final String KEY_EVENT_ID_FOREIGN = "EventId";
+    static final String COL_PHOTO_MOMENT_ID = "MomentId";
+    static final String COL_PHOTO_MOMENT_CAPTION = "Caption";
+    static final String COL_PHOTO_MOMENT_IMAGE = "Image";
+    static final String COL_PHOTO_MOMENT_EVENT_ID_FOREIGN = "EventId";
+
+    // Expense moment
+    static final String TABLE_EXPENSE_MOMENT = "Expense";
+    static final String COL_EXPENSE_MOMENT_ID = "ExpenseId";
+    static final String COL_EXPENSE_MOMENT_TITLE = "Title";
+    static final String COL_EXPENSE_MOMENT_AMOUNT = "Amount";
+    static final String COL_EXPENSE_MOMENT_EVENT_ID_FOREIGN = "EventId";
 
     // Query to create Users table
     private static String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + " (" + COL_USER_ID +
@@ -55,24 +52,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Query to create Events table
     private static String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" +
             COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_EVENT_FROM +
-            " TEXT, " + COL_EVENT_TO + " TEXT, " + COL_EVENT_BUDGET + " DOUBLE, " + COL_USER_ID_FOREIGN +
-            " INTEGER, FOREIGN KEY(" + COL_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
+            " TEXT, " + COL_EVENT_TO + " TEXT, " + COL_EVENT_BUDGET + " DOUBLE, " + COL_EVENT_USER_ID_FOREIGN +
+            " INTEGER, FOREIGN KEY(" + COL_EVENT_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
             COL_USER_ID + "));";
 
-    /*
-    // Query to create Moment table
-    private static String CREATE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_MOMENTS + " (" +
-            COL_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_MOMENT_TYPE + " TEXT, " +
-            COL_MOMENT_DETAILS + " TEXT, " + COL_MOMENT_COST + " DOUBLE, " + COL_MOMENT_IMAGE_PATH +
-            " TEXT, " + COL_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" + COL_EVENT_ID_FOREIGN +
-            ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
-    */
-
     // Query to create PhotoMoment table
-    private static String CREATE_PHOTO_MOMENT_TABLE = "CREATE TABLE " + TABLE_PHOTO_MOMENT + "("
-            + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, "
-            + KEY_IMAGE + " BLOB, " + KEY_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" +
-            KEY_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
+    private static String CREATE_PHOTO_MOMENTS_TABLE = "CREATE TABLE " + TABLE_PHOTO_MOMENT + "("
+            + COL_PHOTO_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_PHOTO_MOMENT_CAPTION + " TEXT, "
+            + COL_PHOTO_MOMENT_IMAGE + " BLOB, " + COL_PHOTO_MOMENT_EVENT_ID_FOREIGN + " INTEGER, FOREIGN KEY(" +
+            COL_PHOTO_MOMENT_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" + COL_EVENT_ID + "));";
+
+    // Query to create Expense table
+    private static String CREATE_EXPENSE_MOMENTS_TABLE = "CREATE TABLE " + TABLE_EXPENSE_MOMENT + "("
+            + COL_EXPENSE_MOMENT_ID + " INTEGER PRIMARY KEY, " + COL_EXPENSE_MOMENT_TITLE + " " +
+            "TEXT, " + COL_EXPENSE_MOMENT_AMOUNT + " DOUBLE " + COL_EXPENSE_MOMENT_EVENT_ID_FOREIGN + " INTEGER, " +
+            "FOREIGN KEY(" + COL_PHOTO_MOMENT_EVENT_ID_FOREIGN + ") REFERENCES " + TABLE_EVENTS + "(" +
+            COL_EVENT_ID + "));";
 
     // constructor
     public DatabaseHelper(Context context) {
@@ -84,8 +79,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_EVENTS_TABLE);
-//        db.execSQL(CREATE_MOMENTS_TABLE);
-        db.execSQL(CREATE_PHOTO_MOMENT_TABLE);
+        db.execSQL(CREATE_PHOTO_MOMENTS_TABLE);
+        db.execSQL(CREATE_EXPENSE_MOMENTS_TABLE);
         Log.e("DATABASE", "onCreate: " + " tables created");
     }
 
@@ -93,8 +88,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOMENTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PHOTO_MOMENT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXPENSE_MOMENT);
         onCreate(db);
     }
 

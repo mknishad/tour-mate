@@ -14,6 +14,7 @@
         android:id="@+id/etCostTitle"
         android:hint="Enter Title"
         android:inputType="text"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -22,14 +23,18 @@
         android:layout_below="@+id/etCostTitle"
         android:hint="Enter amount"
         android:inputType="number"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnSaveCostEvent"
         android:layout_below="@+id/etCostAmount"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:text="Save"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
         android:textAllCaps="false"
         android:onClick="save"
         android:layout_width="match_parent"
