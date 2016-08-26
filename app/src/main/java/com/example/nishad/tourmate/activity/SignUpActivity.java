@@ -1,6 +1,8 @@
 package com.example.nishad.tourmate.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
     private UsersDataSource usersDataSource;
     private ArrayList<User> users;
     private ArrayList<String> emails;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.signUpPassword);
         rePassword = (EditText) findViewById(R.id.signUpRepassword);
         usersDataSource = new UsersDataSource(this);
+
+        sharedPreferences = getSharedPreferences(LoginActivity.LOGINPREF, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -70,6 +75,9 @@ public class SignUpActivity extends AppCompatActivity {
                         user = new User(userNameText, emailText, passwordText);
                         usersDataSource.addUser(user);
                         Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(Constants.USER_EMAIL, emailText);
+                        editor.commit();
                         Intent intent = new Intent(this, TravelEventsActivity.class);
                         intent.putExtra(Constants.LOGIN_SIGNUP_ADD_EVENT, "SignUp");
                         intent.putExtra(Constants.USER_EMAIL, emailText);
@@ -84,5 +92,11 @@ public class SignUpActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Enter information properly", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void goToSignIn(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }
