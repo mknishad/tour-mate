@@ -25,14 +25,13 @@ public class AddEventActivity extends AppCompatActivity {
 
     private EditText etPlace;
     private EditText etBudget;
+    private EditText etEmergency;
     public static TextView tvFromDate;
     public static TextView tvToDate;
     private EventsDataSource eventsDataSource;
     private UsersDataSource usersDataSource;
     private String userEmail;
     private User user;
-    public String fromDate;
-    public String toDate;
     public static boolean date = false;
 
     @Override
@@ -50,6 +49,7 @@ public class AddEventActivity extends AppCompatActivity {
     private void findView() {
         etPlace = (EditText) findViewById(R.id.etPlace);
         etBudget = (EditText) findViewById(R.id.etBudget);
+        etEmergency = (EditText) findViewById(R.id.etEmergencyNumber);
         tvFromDate = (TextView) findViewById(R.id.tvFromDate);
         tvToDate = (TextView) findViewById(R.id.tvToDate);
     }
@@ -57,10 +57,11 @@ public class AddEventActivity extends AppCompatActivity {
     public void addEvent(View view) {
         String eventName = etPlace.getText().toString();
         String eventBudget = etBudget.getText().toString();
+        String emergency = etEmergency.getText().toString();
         String fromDate = tvFromDate.getText().toString();
         String toDate = tvToDate.getText().toString();
-        if (!eventName.equals("Enter event") && !eventBudget.equals("Enter budget") && !fromDate
-                .equals("Select date") && !toDate.equals("Select date")) {
+        if (!eventName.equals("Enter event") && !eventBudget.equals("Enter budget") && !emergency
+                .equals("Enter emergency number") && !fromDate.equals("Select date") && !toDate.equals("Select date")) {
             double b;
             try {
                 b = Double.parseDouble(eventBudget);
@@ -69,7 +70,7 @@ public class AddEventActivity extends AppCompatActivity {
                 etBudget.setText("");
                 return;
             }
-            Event event = new Event(eventName, b, fromDate, toDate);
+            Event event = new Event(eventName, b, emergency, fromDate, toDate);
             eventsDataSource.addEvent(user.getUserId(), event);
             Toast.makeText(this, eventName+" added successfully", Toast.LENGTH_SHORT).show();
 

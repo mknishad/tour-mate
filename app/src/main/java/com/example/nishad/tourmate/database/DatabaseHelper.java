@@ -25,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String COL_EVENT_ID = "EventId";
     static final String COL_EVENT_NAME = "EventName";
     static final String COL_EVENT_BUDGET = "Budget";
+    static final String COL_EVENT_EMERGENCY = "EmergencyNumber";
     static final String COL_EVENT_FROM = "FromDate";
     static final String COL_EVENT_TO = "ToDate";
     static final String COL_EVENT_USER_ID_FOREIGN = "UserId";
@@ -52,8 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Query to create Events table
     private static String CREATE_EVENTS_TABLE = "CREATE TABLE " + TABLE_EVENTS + " (" +
             COL_EVENT_ID + " INTEGER PRIMARY KEY, " + COL_EVENT_NAME + " TEXT, " + COL_EVENT_FROM +
-            " TEXT, " + COL_EVENT_TO + " TEXT, " + COL_EVENT_BUDGET + " DOUBLE, " + COL_EVENT_USER_ID_FOREIGN +
-            " INTEGER, FOREIGN KEY(" + COL_EVENT_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
+            " TEXT, " + COL_EVENT_TO + " TEXT, " + COL_EVENT_BUDGET + " DOUBLE, " +
+            COL_EVENT_EMERGENCY + " TEXT, " + COL_EVENT_USER_ID_FOREIGN + " INTEGER, FOREIGN KEY" +
+            "(" + COL_EVENT_USER_ID_FOREIGN + ") REFERENCES " + TABLE_USERS + "(" +
             COL_USER_ID + "));";
 
     // Query to create PhotoMoment table

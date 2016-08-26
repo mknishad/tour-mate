@@ -41,6 +41,7 @@ public class EventsDataSource {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_EVENT_NAME, event.getEventName());
         values.put(DatabaseHelper.COL_EVENT_BUDGET, event.getBudget());
+        values.put(DatabaseHelper.COL_EVENT_EMERGENCY, event.getEmergencyNumber());
         values.put(DatabaseHelper.COL_EVENT_FROM, event.getFromDate());
         values.put(DatabaseHelper.COL_EVENT_TO, event.getToDate());
         values.put(DatabaseHelper.COL_EVENT_USER_ID_FOREIGN, userId);
@@ -55,7 +56,11 @@ public class EventsDataSource {
     public Event getEvent(int eventId) {
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_EVENT_USER_ID_FOREIGN}, DatabaseHelper.COL_EVENT_ID + " = " + eventId + ";", null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID,
+                DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET,
+                DatabaseHelper.COL_EVENT_EMERGENCY, DatabaseHelper.COL_EVENT_FROM,
+                DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_EVENT_USER_ID_FOREIGN},
+                DatabaseHelper.COL_EVENT_ID + " = " + eventId + ";", null, null, null, null);
 
         cursor.moveToFirst();
         Event event = createEvent(cursor);
@@ -72,7 +77,12 @@ public class EventsDataSource {
 
         this.open();
 
-        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME, DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO, DatabaseHelper.COL_EVENT_USER_ID_FOREIGN}, DatabaseHelper.COL_EVENT_USER_ID_FOREIGN + " = " + userId + ";", null, null, null, null);
+        Cursor cursor = database.query(DatabaseHelper.TABLE_EVENTS, new String[] {
+                DatabaseHelper.COL_EVENT_ID, DatabaseHelper.COL_EVENT_NAME,
+                DatabaseHelper.COL_EVENT_BUDGET, DatabaseHelper.COL_EVENT_EMERGENCY ,
+                DatabaseHelper.COL_EVENT_FROM, DatabaseHelper.COL_EVENT_TO,
+                DatabaseHelper.COL_EVENT_USER_ID_FOREIGN}, DatabaseHelper.COL_EVENT_USER_ID_FOREIGN
+                + " = " + userId + ";", null, null, null, null);
 
         if(cursor!=null && cursor.getCount()>0) {
             cursor.moveToFirst();
@@ -96,6 +106,7 @@ public class EventsDataSource {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_EVENT_NAME, event.getEventName());
         values.put(DatabaseHelper.COL_EVENT_BUDGET, event.getBudget());
+        values.put(DatabaseHelper.COL_EVENT_EMERGENCY, event.getEmergencyNumber());
         values.put(DatabaseHelper.COL_EVENT_FROM, event.getFromDate());
         values.put(DatabaseHelper.COL_EVENT_TO, event.getToDate());
 
@@ -120,11 +131,12 @@ public class EventsDataSource {
         int eventIdKey = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_ID));
         String eventName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_NAME));
         double budget = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_BUDGET));
+        String emergencyNumber = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_EMERGENCY));
         String from = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_FROM));
         String to = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_TO));
         int userIdForeign = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_EVENT_USER_ID_FOREIGN));
 
-        Event event = new Event(eventIdKey, eventName, budget, from, to, userIdForeign);
+        Event event = new Event(eventIdKey, eventName, budget, emergencyNumber, from, to, userIdForeign);
 
         return event;
     }

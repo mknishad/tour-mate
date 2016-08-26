@@ -8,24 +8,28 @@ public class Event {
     private int eventId;
     private String eventName;
     private double budget;
+    private String emergencyNumber;
     private String fromDate;
     private String toDate;
     private int userIdForeign;
 
     // Constructor with id and foreign key
-    public Event(int eventId, String eventName, double budget, String fromDate, String toDate, int userIdForeign) {
+    public Event(int eventId, String eventName, double budget, String emergencyNumber, String fromDate, String toDate, int userIdForeign) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.budget = budget;
+        this.emergencyNumber = emergencyNumber;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.userIdForeign = userIdForeign;
     }
 
     // Constructor without id and foreign key
-    public Event(String eventName, double budget, String fromDate, String toDate) {
+    public Event(String eventName, double budget, String emergencyNumber, String fromDate, String
+            toDate) {
         this.eventName = eventName;
         this.budget = budget;
+        this.emergencyNumber = emergencyNumber;
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
@@ -79,5 +83,13 @@ public class Event {
 
     public void setUserIdForeign(int userIdForeign) {
         this.userIdForeign = userIdForeign;
+    }
+
+    public String getEmergencyNumber() {
+        return emergencyNumber;
+    }
+
+    public void setEmergencyNumber(String emergencyNumber) {
+        this.emergencyNumber = emergencyNumber;
     }
 }

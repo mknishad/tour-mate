@@ -28,9 +28,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/etEmergencyNumber"
+        android:hint="Enter emergency number"
+        android:textSize="25sp"
+        android:inputType="number"
+        android:layout_below="@id/etBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tvFrom"
-        android:layout_below="@+id/etBudget"
+        android:layout_below="@+id/etEmergencyNumber"
         android:layout_marginTop="8dp"
         android:text="From: "
         android:textSize="25sp"
@@ -75,6 +84,8 @@
         android:layout_marginTop="8dp"
         android:text="Save"
         android:textAllCaps="false"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:onClick="addEvent"
         android:layout_width="120dp"
@@ -87,6 +98,8 @@
         android:text="Cancel"
         android:textAllCaps="false"
         android:textSize="25sp"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:layout_alignBaseline="@+id/btnSaveEvent"
         android:onClick="goBack"
         android:layout_width="120dp"
