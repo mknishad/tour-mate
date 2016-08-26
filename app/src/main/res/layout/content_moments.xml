@@ -30,6 +30,14 @@
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"/>
 
+            <ImageButton
+                android:id="@+id/ibEmergency"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_call"
+                android:onClick="callEmergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <TextView
                 android:id="@+id/tvExpenseEventHyphen"
                 android:layout_width="wrap_content"

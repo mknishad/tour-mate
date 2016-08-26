@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/tvMessage"
-        android:text="Tap the picture to take photo"
+        android:text="Tap the picture to open camera"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -31,6 +31,8 @@
         android:layout_below="@id/ivPhoto"
         android:layout_marginTop="5dp"
         android:hint="Enter caption"
+        android:textSize="25sp"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -39,6 +41,9 @@
         android:layout_below="@id/etCaption"
         android:layout_alignParentRight="true"
         android:text="Save"
+        android:textSize="25sp"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:onClick="save"
         android:layout_width="120dp"
@@ -49,6 +54,9 @@
         android:layout_below="@id/etCaption"
         android:layout_alignParentLeft="true"
         android:text="Cancel"
+        android:textSize="25sp"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
         android:textAllCaps="false"
         android:onClick="cancel"
         android:layout_width="120dp"
