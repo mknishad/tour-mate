@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nishad.tourmate.activity.WeatherActivity">
+
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivCondition"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_below="@id/ivCondition"
+            android:src="@drawable/splash"/>
+
+        <TextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Today"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDay"
+            android:text="Date"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/tvCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvDate"
+            android:text="City Name"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/tvTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCityName"
+            android:text="28"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"/>
+
+        <TextView
+            android:id="@+id/tvDegree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvTemperature"
+            android:layout_toRightOf="@+id/tvTemperature"
+            android:text=" °C"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"/>
+
+        <TextView
+            android:id="@+id/tvCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/ivCondition"
+            android:layout_alignRight="@id/ivCondition"
+            android:layout_below="@id/ivCondition"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Condition"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutFooter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDayOneDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="28/08/2016"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <TextView
+                android:id="@+id/tvDayOneTemp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="28 °C"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <ImageView
+                android:id="@+id/ivDayOneCond"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/i01d"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDayTwoDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="29/08/2016"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <TextView
+                android:id="@+id/tvDayTwoTemp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="27 °C"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <ImageView
+                android:id="@+id/ivDayTwoCond"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/i02d"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDayThreeDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="30/08/2016"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <TextView
+                android:id="@+id/tvDayThreeTemp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="27 °C"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <ImageView
+                android:id="@+id/ivDayThreeCond"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/i03d"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDayFourDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="31/08/2016"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <TextView
+                android:id="@+id/tvDayFourTemp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="25 °C"
+                android:textColor="#000000"
+                android:textSize="23sp"/>
+
+            <ImageView
+                android:id="@+id/ivDayFourCond"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/i10d"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.nishad.tourmate">
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true"/>
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,6 +40,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".activity.ExpenseActivity">
+        </activity>
+        <activity android:name=".activity.WeatherActivity">
+        </activity>
+        <activity android:name=".activity.AboutActivity">
         </activity>
     </application>
 

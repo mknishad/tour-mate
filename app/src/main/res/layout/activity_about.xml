@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nishad.tourmate.activity.AboutActivity">
+
+    <TextView
+        android:id="@+id/tvAboutUs"
+        android:text="@string/about_us"
+        android:textSize="17sp"
+        android:typeface="serif"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/ivMamun"
+        android:src="@drawable/mamun"
+        android:layout_below="@+id/tvAboutUs"
+        android:layout_marginTop="10dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:id="@+id/tvNameMamun"
+        android:layout_below="@id/tvAboutUs"
+        android:layout_toRightOf="@+id/ivMamun"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Abdullah Al Mamun"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+    <ImageView
+        android:id="@+id/ivMonir"
+        android:src="@drawable/monir"
+        android:layout_below="@+id/ivMamun"
+        android:layout_marginTop="5dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:id="@+id/tvNameMonir"
+        android:layout_below="@id/tvNameMamun"
+        android:layout_toRightOf="@+id/ivMonir"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Monir Hossain"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+    <ImageView
+        android:id="@+id/ivMahabub"
+        android:src="@drawable/mahabub"
+        android:layout_below="@+id/ivMonir"
+        android:layout_marginTop="5dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:id="@+id/tvNameMahabub"
+        android:layout_below="@id/tvNameMonir"
+        android:layout_toRightOf="@+id/ivMahabub"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Mahabub Hossan"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+    <ImageView
+        android:id="@+id/ivRubuya"
+        android:src="@drawable/rubuya"
+        android:layout_below="@+id/ivMahabub"
+        android:layout_marginTop="5dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:id="@+id/tvNameRubuya"
+        android:layout_below="@id/tvNameMahabub"
+        android:layout_toRightOf="@+id/ivRubuya"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:text="Rubuya Tabassum"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+</RelativeLayout>

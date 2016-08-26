@@ -8,4 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_event">AddEventActivity</string>
     <string name="title_activity_moments">MomentsActivity</string>
+    <string name="about_us">We are Elite Developers, some passionate Android Application
+        Developers. We love to take challenge and solve creative problems. This is our first app.
+        Feel free to contact us and give your feedback. Thank you.</string>
 </resources>
