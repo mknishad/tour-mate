@@ -3,33 +3,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_travel_event"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import"/>
+            android:id="@+id/nav_photo_moment"
+            android:icon="@drawable/ic_menu_camera2"
+            android:title="Add photo moment" />
         <item
             android:id="@+id/nav_expense_moment"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:icon="@drawable/ic_menu_dollar"
+            android:title="Add expense moment" />
         <item
-            android:id="@+id/nav_weather"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
+            android:id="@+id/nav_weather_moment"
+            android:icon="@drawable/ic_menu_weather"
+            android:title="Weather" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
+            android:id="@+id/nav_all_expense"
+            android:icon="@drawable/ic_menu_dollar"
+            android:title="All expenses" />
     </group>
 
-    <item android:title="Communicate">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout_moment"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="Logout" />
+    </group>
+
+    <item android:title="Developer">
         <menu>
             <item
-                android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share"/>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send"/>
+                android:id="@+id/nav_about_moment"
+                android:icon="@drawable/ic_menu_about"
+                android:title="About Us" />
         </menu>
     </item>
 

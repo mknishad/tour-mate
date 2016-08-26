@@ -2,7 +2,9 @@ package com.example.nishad.tourmate.activity;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import com.example.nishad.tourmate.constant.Constants;
 import com.example.nishad.tourmate.database.EventsDataSource;
 import com.example.nishad.tourmate.database.PhotoMomentDataSource;
 import com.example.nishad.tourmate.model.Event;
+import com.example.nishad.tourmate.model.ExpenseMoment;
 import com.example.nishad.tourmate.model.PhotoMoment;
 
 import java.util.ArrayList;
@@ -196,18 +199,32 @@ public class MomentsActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_travel_event) {
-            // Handle the camera action
+        if (id == R.id.nav_photo_moment) {
+            Intent intent = new Intent(MomentsActivity.this, AddMomentPhotoActivity.class);
+            intent.putExtra(Constants.EVENT_ID, eventId);
+            startActivity(intent);
         } else if (id == R.id.nav_expense_moment) {
-
-        } else if (id == R.id.nav_weather) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_about) {
-
-        } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(MomentsActivity.this, AddMomentExpenseActivity.class);
+            intent.putExtra(Constants.EVENT_ID, eventId);
+            startActivity(intent);
+        } else if (id == R.id.nav_weather_moment) {
+            Intent intent = new Intent(this, WeatherActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_all_expense) {
+            Intent intent = new Intent(this, ExpenseMoment.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_logout_moment) {
+            SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.LOGINPREF,
+                    Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            this.finish();
+        } else if (id == R.id.nav_about_moment) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
