@@ -192,15 +192,15 @@ public class MomentsActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_travel_event) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_expense_moment) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_weather) {
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_send) {
 
